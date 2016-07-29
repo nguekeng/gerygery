@@ -38,6 +38,22 @@ namespace PROJETUNITCOST.PAGES
                 ddlListeSubPeats.DataValueField = "NAMESUBPEAT";
                 ddlListeSubPeats.DataBind();
 
+                SetValuesOfTexBoxes(ddlListeSubPeats.Text);
+
+            }
+            else
+            {
+                ArrayList listOfRegions3 = new ArrayList();
+
+                Parameter param3 = new Parameter("regionName", DbType.String, ddlLesRegions.Text);
+                listOfRegions3.Add(param3);
+
+                ddlListeSubPeats.DataSource = DataBaseManager.GetDataBaseManager().SelectMyData("GETLISTFSUBPEATBYREGION", listOfRegions3);
+                ddlListeSubPeats.DataValueField = "NAMESUBPEAT";
+                ddlListeSubPeats.DataBind();
+
+                SetValuesOfTexBoxes(ddlListeSubPeats.Text);
+
             }
           
 
@@ -135,8 +151,22 @@ namespace PROJETUNITCOST.PAGES
 
         public void SetValuesOfTexBoxes(string subPeat)
         {
-            //get forcast values
+            //get forcast amounth values
 
+            januaryForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "january", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+            febuaryForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "febuary", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+            marchForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "march", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+            aprilForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "april", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+            mayForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "may", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+            junForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "jun", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+            julyForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "july", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+            augustForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "august", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+            septemberForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "september", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+            octoberForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "october", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+            novemberForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "november", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+            decemberForcastBudget.Text = GetValueFromStoreProg(subPeat, "subpeat", "december", "theMonth", "GETTHEFORCASTAMOUNTBYMONTH", "theValue");
+
+            //get forcast bandwith values
 
             //get actual values
             
